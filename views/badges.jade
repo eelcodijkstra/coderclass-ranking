@@ -1,0 +1,17 @@
+extends widged
+
+block widged_content
+    header
+      span= user.name
+      span.type &nbsp;/ badges
+    .container
+      .badges
+        if user.badges
+          for badge in user.badges
+            .badge
+              .shadow
+              .img(style='background-image: url(#{badge.image});')
+              header !{badge.title}
+              p= badge.description
+        else
+          .no-badges #{user.name} has no badges jet.
