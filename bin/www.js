@@ -21,9 +21,9 @@ app.set('port', port)
  */
  
 const options = {
-  key: fs.readFileSync('/etc/apache2/ssl/infvoplein-ssl.key'),
-  cert: fs.readFileSync('/etc/apache2/ssl/infvoplein-ssl.cert')
-}; 
+  key: fs.readFileSync('/etc/letsencrypt/live/infvoplein.nl/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/infvoplein.nl/fullchain.pem')
+} 
 
 const server = https.createServer(options, app)
 
