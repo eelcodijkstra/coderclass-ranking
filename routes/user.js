@@ -1,30 +1,4 @@
-<<<<<<< HEAD
 "use strict";
-
-let express = require('express')
-let router = express.Router()
-let credly = require('../lib/credly')
-
-router.get('/:id', function(req, res, next) {
-
-  let user = {}
-
-  let apiPromises = [
-    credly.request(`/members/${req.params.id}`),
-    credly.request(`/members/${req.params.id}/badges`)
-  ]
-
-  console.time('api requests')
-  Promise.all(apiPromises).then(apiRes => {
-    console.timeEnd('api requests')
-    user.name = apiRes[0].display_name
-    user.badges = apiRes[1].map(badge => {
-      return {
-        title: badge.title,
-        description: badge.description,
-        image: badge.image
-      }
-=======
 const express = require('express')
 const router = express.Router()
 const credly = require('../lib/credly')
@@ -39,7 +13,6 @@ router.get('/:id', function (req, res, next) {
         message: 'Somthing went wrong...',
         error: err
       })
->>>>>>> bf87af308893a810457121a6e804a3b435713b7e
     })
 
   // res.render('badges', {user:
